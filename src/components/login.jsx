@@ -24,7 +24,8 @@ function Login() {
 
         <p className="register-text">
           don’t have an account?
-          <span> sign up</span>
+          <span onClick={() => navigate("/signup")}> sign up</span>
+
         </p>
 
       </div>
