@@ -30,7 +30,7 @@ function Home() {
         <div className="cards">
           <div
             className="card"
-            onClick={() => setSelectedFeature("Study Timer")}
+            onClick={() => navigate("/timer")}
           >
             <img src={timer} alt="Timer" />
             <button>TIMER</button>

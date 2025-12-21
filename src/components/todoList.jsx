@@ -1,10 +1,8 @@
-
 import "../components/todoList.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchTodos } from "../api/todoapi.js";
 import Navbar from "./Navbar.jsx";
-
 
 function TodoList() {
   const navigate = useNavigate();
@@ -45,9 +43,20 @@ function TodoList() {
     setText("");
   };
 
+  // ✅ التعديل الوحيد المطلوب
   const toggleTask = (index) => {
     const updated = [...tasks];
-    updated[index].done = !updated[index].done;
+
+    const wasDone = updated[index].done; // هل كانت منجزة قبل الضغط؟
+
+    updated[index].done = !updated[index].done; // قلب الحالة
+
+    // إذا صارت منجزة الآن (وكانت قبل هيك مش منجزة) → نزيد العداد
+    if (!wasDone && updated[index].done) {
+      let count = Number(localStorage.getItem("completedTasks") || 0);
+      localStorage.setItem("completedTasks", count + 1);
+    }
+
     setTasks(updated);
   };
 
@@ -58,7 +67,6 @@ function TodoList() {
 
   return (
     <>
-      
       <Navbar />
 
       <div className="todo-page">

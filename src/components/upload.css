@@ -15,7 +15,8 @@
 /* Wrapper */
 .folder-wrapper {
   position: relative;
-  width: 560px;
+  width: 100%;
+  max-width: 560px;
 }
 
 /* Tabs */

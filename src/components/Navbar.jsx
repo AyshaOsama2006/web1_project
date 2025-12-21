@@ -11,6 +11,8 @@ function Navbar() {
       <div className="navbar-links">
         <Link to="/home">Home</Link>
         <Link to="/todoList">To Do</Link>
+        <Link to="/timer">Timer</Link>
+        <Link to="/profile">Profile</Link>
         <Link to="/">Logout</Link>
       </div>
     </nav>
