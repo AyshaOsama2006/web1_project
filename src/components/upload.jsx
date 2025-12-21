@@ -1,6 +1,6 @@
 import React, { useState, useRef, useMemo } from "react";
 import Button from "@mui/material/Button";
-import "./FileUpload.css";
+import "./upload.css";
 
 const FileUploadScreen = () => {
   const [files, setFiles] = useState([]);
