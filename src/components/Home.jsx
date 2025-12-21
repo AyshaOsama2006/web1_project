@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./Home.css";
 import Navbar from "./Navbar.jsx";
 
@@ -8,6 +10,7 @@ import todo from "../assets/studymateLogo/Colorful Geometric To Do List A4 Docum
 import files from "../assets/studymateLogo/file shape .png";
 
 function Home() {
+   const navigate = useNavigate();
   const [selectedFeature, setSelectedFeature] = useState("");
 
   return (
@@ -35,7 +38,8 @@ function Home() {
 
           <div
             className="card"
-            onClick={() => setSelectedFeature("To Do List")}
+            onClick={() => navigate("/todoList")}
+            
           >
             <img src={todo} alt="To Do List" />
             <button>TO DO LIST</button>

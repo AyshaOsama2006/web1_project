@@ -1,7 +1,6 @@
 .navbar {
   height: 60px;
-  background-color: #0b0b7a;
-  color: white;
+  background-color: #1a167a;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,32 +8,18 @@
 }
 
 .logo {
+  color: white;
   font-size: 22px;
   font-weight: bold;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 16px;
 }
 
-.nav-links li {
-  cursor: pointer;
-  font-size: 15px;
-}
-
-.nav-links li:hover {
+.navbar-links a:hover {
   text-decoration: underline;
-}
-
-.nav-right {
-  display: flex;
-  gap: 20px;
-  font-size: 14px;
-}
-
-.logout {
-  cursor: pointer;
-  font-weight: bold;
 }

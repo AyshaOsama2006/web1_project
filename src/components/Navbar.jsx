@@ -1,29 +1,22 @@
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
   return (
     <nav className="navbar">
-      {/* Left */}
-      <div className="nav-left">
+      <div className="navbar-left">
         <span className="logo">StudyMate</span>
       </div>
 
-      {/* Center */}
-      <ul className="nav-links">
-        <li>Home</li>
-        <li>To-Do</li>
-        <li>Timer</li>
-        <li>Files</li>
-        <li>Stats</li>
-      </ul>
-
-      {/* Right */}
-      <div className="nav-right">
-        <span>Profile</span>
-        <span className="logout">Logout</span>
+      <div className="navbar-links">
+        <Link to="/home">Home</Link>
+        <Link to="/todoList">To Do</Link>
+        <Link to="/">Logout</Link>
       </div>
     </nav>
   );
 }
 
 export default Navbar;
+
+
