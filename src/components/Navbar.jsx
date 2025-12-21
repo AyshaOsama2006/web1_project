@@ -14,6 +14,8 @@ function Navbar() {
         <Link to="/timer">Timer</Link>
         <Link to="/profile">Profile</Link>
         <Link to="/">Logout</Link>
+        <Link to="/upload">Upload</Link>
+        <Link to="/statisticsScreen">statistics</Link>
       </div>
     </nav>
   );

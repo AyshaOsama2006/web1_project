@@ -47,9 +47,9 @@ function Home() {
 
           <div
             className="card"
-            onClick={() => setSelectedFeature("Upload Files")}
+            onClick={() => navigate("/Upload")}
           >
-            <img src={files} alt="Upload Files" />
+            <img src={files} alt="Upload files" />
             <button>UPLOAD FILES</button>
           </div>
         </div>
