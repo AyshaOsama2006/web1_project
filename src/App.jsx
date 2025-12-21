@@ -5,8 +5,6 @@ import './App.css';
 
 import Home from './components/Home.jsx';
 import Login from "./components/Login";
-import Signup from "./pages/Signup";
-import Timer from "./pages/Timer";
 
 function App() {
     return (
@@ -15,8 +13,6 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Login />} />
                     <Route path="/home" element={<Home />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/timer" element={<Timer />} />
                 </Routes>
             </Router>
         </div>
