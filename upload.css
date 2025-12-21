@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+  font-family: "Georgia", serif;
+}
+
+/* Background */
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a00b8, #2a0ccf);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Wrapper */
+.folder-wrapper {
+  position: relative;
+  width: 560px;
+}
+
+/* Tabs */
+.tabs {
+  position: absolute;
+  top: -38px;
+  right: 40px;
+  display: flex;
+  gap: 10px;
+}
+
+.tab {
+  padding: 10px 22px;
+  background: #3aa8ff;
+  color: white;
+  border-radius: 14px 14px 0 0;
+  font-size: 12px;
+}
+
+.tab.active {
+  background: #26d1c3;
+}
+
+/* Folder */
+.folder {
+  min-height: 420px;
+  background: linear-gradient(180deg, #b7ddf7, #7fb0d9);
+  border-radius: 28px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  position: relative;
+  text-align: center;
+}
+
+/* Folder top tab */
+.folder::before {
+  content: "";
+  position: absolute;
+  top: -45px;
+  left: 40px;
+  width: 65%;
+  height: 90px;
+  background: linear-gradient(180deg, #c8dcf5, #b3c6eb);
+  border-radius: 30px;
+}
+
+/* Title */
+.title {
+  color: white;
+  font-size: 52px;
+  margin-bottom: 10px;
+}
+
+/* Upload button */
+.upload-btn {
+  margin-top: 10px !important;
+  background-color: #26d1c3 !important;
+}
+
+/* Count */
+.count {
+  margin-top: 10px;
+  color: #003;
+  font-weight: bold;
+}
+
+/* Files area */
+.files-area {
+  margin-top: 15px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+  padding: 15px;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+/* File item */
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+/* Delete button */
+.file-item button {
+  background: none;
+  border: none;
+  color: crimson;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.empty {
+  color: #333;
+}
