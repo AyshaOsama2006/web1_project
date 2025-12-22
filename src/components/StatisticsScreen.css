@@ -79,13 +79,21 @@
   margin-bottom: 12px;
 }
 
-.noteLines span {
-  display: block;
-  height: 2px;
-  background: rgba(111, 53, 223, 0.55);
-  border-radius: 999px;
-  margin: 10px 0;
+.noteInput {
+  width: 100%;
+  min-height: 120px;
+  border: none;
+  outline: none;
+  resize: vertical;
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #2a1166;
+  font-family: "Georgia", serif;
+  font-size: 14px;
+  border: 2px solid rgba(123, 63, 228, 0.35);
 }
+
 
 @media (max-width: 640px) {
   .statsCard {
@@ -99,4 +107,10 @@
   .statValue {
     font-size: 40px;
   }
+
+  .noteInput {
+    min-height: 90px;
+    font-size: 13px;
+  }
 }
+
