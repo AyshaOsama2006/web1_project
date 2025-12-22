@@ -58,8 +58,8 @@ function Upload() {
       <div className="page">
         <div className="folder-wrapper">
           <div className="tabs">
-            <div className="tab">LESSONS</div>
-            <div className="tab active">WINS</div>
+            <div className="tab"></div>
+            <div className="tab active"></div>
           </div>
 
           <div className="folder">
