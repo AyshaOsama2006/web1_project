@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Timer.css";
+import "./timer.css";
 import Navbar from "./Navbar.jsx";
 
 function Timer() {

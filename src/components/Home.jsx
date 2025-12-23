@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "./Home.css";
-import Navbar from "./Navbar.jsx";
+import "./home.css";
+import Navbar from "./navbar.jsx";
 
 import logo from "../assets/studymateLogo/study.png";
 import timer from "../assets/studymateLogo/timer.png";

@@ -1,12 +1,12 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 
-import Login from "./components/Login.jsx";
+import Login from "./components/login.jsx";
 import Signup from "./components/signup.jsx";
-import Home from "./components/Home.jsx";
-import TodoList from "./components/TodoList.jsx";
-import Timer from "./components/Timer.jsx";
-import Profile from "./components/Profile.jsx";
-import StatisticsScreen from "./components/StatisticsScreen.jsx";
+import Home from "./components/home.jsx";
+import TodoList from "./components/todoList.jsx";
+import Timer from "./components/timer.jsx";
+import Profile from "./components/profile.jsx";
+import StatisticsScreen from "./components/statisticsscreen.jsx";
 import Upload from "./components/upload.jsx";
 
 function App() {

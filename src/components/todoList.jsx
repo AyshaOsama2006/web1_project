@@ -2,7 +2,7 @@ import "../components/todoList.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchTodos } from "../api/todoapi.js";
-import Navbar from "./Navbar.jsx";
+import Navbar from "./navbar.jsx";
 
 function TodoList() {
   const navigate = useNavigate();

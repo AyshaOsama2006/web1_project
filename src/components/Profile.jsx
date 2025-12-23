@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import "./Profile.css";
-import Navbar from "./Navbar.jsx";
+import "./profile.css";
+import Navbar from "./navbar.jsx";
 
 function Profile() {
   const storedUser = JSON.parse(localStorage.getItem("user")) || {};

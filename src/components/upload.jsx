@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import Button from "@mui/material/Button";
-import Navbar from "./Navbar.jsx";
+import Navbar from "./navbar.jsx";
 import "./upload.css";
 import { fetchFiles } from "../api/upload.js";
 
