@@ -1,127 +1,101 @@
-import "../components/todoList.css";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { fetchTodos } from "../api/todoapi.js";
+import { useState, useEffect, useRef, useMemo } from "react";
+import Button from "@mui/material/Button";
 import Navbar from "./Navbar.jsx";
+import "./upload.css";
+import { fetchFiles } from "../api/upload.js";
 
-function TodoList() {
-  const navigate = useNavigate();
-
-  const [tasks, setTasks] = useState([]);
-  const [text, setText] = useState("");
-  const [notes, setNotes] = useState("");
+function Upload() {
+  const [files, setFiles] = useState([]);
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("todo-data"));
-
-    if (saved) {
-      setTasks(saved.tasks || []);
-      setNotes(saved.notes || "");
-    } else {
-      fetchTodos()
-        .then((data) => {
-          const formatted = data.map((item) => ({
-            text: item.title,
-            done: item.completed,
-          }));
-          setTasks(formatted);
-        })
-        .catch((err) => console.log(err));
-    }
+    fetchFiles()
+      .then((data) => {
+        const formatted = data.map((item) => ({
+          name: item.title,
+          url: null,
+          source: "api",
+        }));
+        setFiles(formatted);
+      })
+      .catch((err) => console.log("API Error:", err));
   }, []);
 
+  const handleUpload = (e) => {
+    const selectedFiles = Array.from(e.target.files);
+
+    const formatted = selectedFiles.map((file) => ({
+      name: file.name,
+      url: URL.createObjectURL(file),
+      source: "local",
+    }));
+
+    setFiles((prev) => [...prev, ...formatted]);
+    e.target.value = null;
+  };
+
+  const handleDelete = (index) => {
+    const fileToDelete = files[index];
+    if (fileToDelete?.url) URL.revokeObjectURL(fileToDelete.url);
+    setFiles((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const fileCount = useMemo(() => files.length, [files]);
+
+
   useEffect(() => {
-    localStorage.setItem(
-      "todo-data",
-      JSON.stringify({ tasks, notes })
-    );
-  }, [tasks, notes]);
-
-  const addTask = () => {
-    if (!text.trim()) return;
-    setTasks([...tasks, { text, done: false }]);
-    setText("");
-  };
-
-  // ✅ التعديل الوحيد المطلوب
-  const toggleTask = (index) => {
-    const updated = [...tasks];
-
-    const wasDone = updated[index].done; // هل كانت منجزة قبل الضغط؟
-
-    updated[index].done = !updated[index].done; // قلب الحالة
-
-    // إذا صارت منجزة الآن (وكانت قبل هيك مش منجزة) → نزيد العداد
-    if (!wasDone && updated[index].done) {
-      let count = Number(localStorage.getItem("completedTasks") || 0);
-      localStorage.setItem("completedTasks", count + 1);
-    }
-
-    setTasks(updated);
-  };
-
-  const deleteTask = (index) => {
-    const updated = tasks.filter((_, i) => i !== index);
-    setTasks(updated);
-  };
+    return () => {
+      files.forEach((f) => f.url && URL.revokeObjectURL(f.url));
+    };
+  }, [files]);
 
   return (
     <>
       <Navbar />
 
-      <div className="todo-page">
-        <button className="back-btn" onClick={() => navigate("/home")}>
-          ← Back
-        </button>
+      <div className="page">
+        <div className="folder-wrapper">
+          <div className="folder">
+            <h1 className="title">
+              MY <br /> FILES
+            </h1>
 
-        <div className="todo-card">
-          <h2>To Do List</h2>
-
-          <div className="add-task">
             <input
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              placeholder="Add task..."
+              type="file"
+              multiple
+              ref={fileInputRef}
+              hidden
+              onChange={handleUpload}
             />
-            <button onClick={addTask}>+</button>
-          </div>
 
-          <ul>
-            {tasks.map((task, i) => (
-              <li key={i}>
-                <span
-                  className={task.done ? "checked" : ""}
-                  onClick={() => toggleTask(i)}
-                >
-                  {task.text}
-                </span>
+            <Button
+              variant="contained"
+              className="upload-btn"
+              onClick={() => fileInputRef.current?.click()}
+            >
+              Upload Files
+            </Button>
 
-                <div className="task-actions">
-                  <input
-                    type="checkbox"
-                    checked={task.done}
-                    readOnly
-                    onClick={() => toggleTask(i)}
-                  />
+            <p className="count">Total Files: {fileCount}</p>
 
-                  <button
-                    className="delete-btn"
-                    onClick={() => deleteTask(i)}
-                  >
-                    ✕
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <div className="notes">
-            <p>Notes :</p>
-            <textarea
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="Write your notes here..."
-            />
+            <div className="files-area">
+              {files.length === 0 ? (
+                <p className="empty">No files uploaded</p>
+              ) : (
+                files.map((file, index) => (
+                  <div className="file-item" key={`${file.name}-${index}`}>
+                    {file.url ? (
+                      <a href={file.url} target="_blank" rel="noreferrer">
+                        {file.name}
+                      </a>
+                    ) : (
+                      <span>{file.name}</span>
+                    )}
+                    <button onClick={() => handleDelete(index)}>✖</button>
+                  </div>
+                ))
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -129,4 +103,4 @@ function TodoList() {
   );
 }
 
-export default TodoList;
+export default Upload;
