@@ -1,8 +1,10 @@
+
 import "../components/todoList.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchTodos } from "../api/todoapi.js";
 import Navbar from "./Navbar.jsx";
+
 
 function TodoList() {
   const navigate = useNavigate();
@@ -45,16 +47,7 @@ function TodoList() {
 
   const toggleTask = (index) => {
     const updated = [...tasks];
-
-    const wasDone = updated[index].done; 
-
     updated[index].done = !updated[index].done;
-
-    if (!wasDone && updated[index].done) {
-      let count = Number(localStorage.getItem("completedTasks") || 0);
-      localStorage.setItem("completedTasks", count + 1);
-    }
-
     setTasks(updated);
   };
 
@@ -65,6 +58,7 @@ function TodoList() {
 
   return (
     <>
+      
       <Navbar />
 
       <div className="todo-page">
