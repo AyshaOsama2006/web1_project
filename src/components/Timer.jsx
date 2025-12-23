@@ -8,7 +8,6 @@ function Timer() {
   const [isPaused, setIsPaused] = useState(false);
   const [color, setColor] = useState("#1a167a");
 
-  // تغيير اللون حسب الوقت
   useEffect(() => {
     if (seconds < 60) {
       setColor("#6a0dad"); 
@@ -19,7 +18,6 @@ function Timer() {
     }
   }, [seconds]);
 
-  // تشغيل التايمر
   useEffect(() => {
     let interval;
 
@@ -38,7 +36,6 @@ function Timer() {
     return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
-  // دالة Reset مع تسجيل الجلسة
   const handleReset = () => {
     if (seconds > 0) {
       let sessions = Number(localStorage.getItem("timerSessions") || 0);
